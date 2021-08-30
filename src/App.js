@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from "prop-types";
 
 // props.fav === {fav} (props 안의 값인 fav를 가져오는 방법)
 
@@ -11,27 +10,22 @@ import PropTypes from "prop-types";
 
 class App extends React.Component {
   state = {
-    // 바꿀 수 있는 data
-    count: 0
+    isLoading: true,
+    movies: []
   };
 
-  // JavaScript 코드
-  add = () => {
-    this.setState(current => ({ count: current.count + 1 }));
-    // current : 현재 state
-  };
-
-  minus = () => {
-    this.setState(current => ({ count: current.count - 1 }));
-  };
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 6000); // 6초 후에 isLoading을 false로 바꿈
+  }
 
   // setState()를 사용하면 render() 호출
   render() {
+    const { isLoading } = this.state;
     return (
       <div>
-        <h1>The number is : {this.state.count}</h1>
-        <button onClick={this.add}>Add</button>
-        <button onClick={this.minus}>Minus</button>
+        {isLoading ? "Loading..." : "We are ready"}
       </div>
     );
   }
