@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Movie from './Movie';
+import "./App.css";
 
 // props.fav === {fav} (props 안의 값인 fav를 가져오는 방법)
 
@@ -31,19 +32,27 @@ class App extends React.Component {
   render() {
     const { isLoading, movies } = this.state;
     return (
-      <div>
+      <section className="container">
         {/* 삼항연산자 */}
-        {isLoading ? "Loading..." : movies.map(movie => (
-          <Movie
-            key={movie.id}
-            id={movie.id}
-            year={movie.id}
-            title={movie.title}
-            summary={movie.summary}
-            poster={movie.medium_cover_image}
-          />
-        ))}
-      </div>
+        {isLoading
+          ? (<div className="loader">
+            <span className="loader__text">Loading...</span>
+          </div>) : (
+            <div className="movie">
+              {movies.map(movie => (
+                <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  year={movie.id}
+                  title={movie.title}
+                  summary={movie.summary}
+                  poster={movie.medium_cover_image}
+                  genres={movie.genres}
+                />
+              ))}
+            </div>
+          )}
+      </section>
     );
   }
 }
