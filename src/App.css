@@ -26,7 +26,7 @@
     font-weight: 300;
   }
   
-  .movies {
+  .movie {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -35,4 +35,3 @@
     padding-top: 70px;
     width: 80%;
   }
-  
